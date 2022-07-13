@@ -10,13 +10,7 @@ import { useContext } from "react";
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";
 
 const Checkout = () => {
-  const { cartItems } = useContext(CartContext);
-
-  const countTotal = (itemList) => {
-    return itemList.reduce((total, current) => {
-      return (total += current.quantity * current.price);
-    }, 0);
-  };
+  const { cartItems, cartTotal } = useContext(CartContext);
 
   return (
     <CheckoutContainer>
@@ -40,7 +34,7 @@ const Checkout = () => {
       {cartItems.map((item) => (
         <CheckoutItem item={item} key={item.id} />
       ))}
-      <Total>${countTotal(cartItems)}</Total>
+      <Total>{cartTotal}</Total>
     </CheckoutContainer>
   );
 };

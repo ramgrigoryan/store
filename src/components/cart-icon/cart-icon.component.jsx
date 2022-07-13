@@ -5,7 +5,7 @@ import { useContext } from "react";
 
 const CartIcon = () => {
   const { dropdownStatus, setDropdownStatus } = useContext(CartContext);
-  const { cartItems } = useContext(CartContext);
+  const { cartCount } = useContext(CartContext);
   return (
     <CartIconContainer
       onClick={() => {
@@ -13,9 +13,7 @@ const CartIcon = () => {
       }}
     >
       <ShoppingBag />
-      <ItemCount>
-        {cartItems.reduce((total, cur) => (total += cur.quantity), 0)}
-      </ItemCount>
+      <ItemCount>{cartCount}</ItemCount>
     </CartIconContainer>
   );
 };
